@@ -2,12 +2,16 @@ import { useState } from "react";
 import {useNavigation} from '@react-navigation/native';
 import { StyleSheet, TextInput, View, TouchableOpacity, Text } from "react-native";
 import colors from "../theme/colors";
+import {useDispatch} from "react-redux";
+import {addNote} from "../redux/notesSlice";
 
 const AddNoteScreen = () => {
     const [content, setContent] = useState('');
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     const addHandler = () => {
+        dispatch (addNote(content))
         navigation.goBack()
     }
 
